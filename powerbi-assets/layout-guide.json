@@ -1,0 +1,63 @@
+{
+  "page": {
+    "width": 1280,
+    "height": 720,
+    "background": "#006B54"
+  },
+  "recommendedPowerBIPage": {
+    "type": "16:9",
+    "canvasSettings": "1280x720 reference layout"
+  },
+  "objects": [
+    {
+      "name": "Dashboard background shell",
+      "asset": "dashboard-shell.svg",
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "Main metric grid",
+      "x": 230,
+      "y": 101,
+      "width": 405,
+      "height": 268
+    },
+    {
+      "name": "Top age group clustered column chart",
+      "x": 650,
+      "y": 101,
+      "width": 590,
+      "height": 268
+    },
+    {
+      "name": "Income group donut",
+      "x": 230,
+      "y": 396,
+      "width": 190,
+      "height": 260
+    },
+    {
+      "name": "Credit score donut",
+      "x": 441,
+      "y": 396,
+      "width": 190,
+      "height": 260
+    },
+    {
+      "name": "DTI category column chart",
+      "x": 650,
+      "y": 396,
+      "width": 270,
+      "height": 260
+    },
+    {
+      "name": "Loan risk column chart",
+      "x": 944,
+      "y": 396,
+      "width": 296,
+      "height": 260
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "figma-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Model Context Protocol (MCP) server for Figma REST API",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "import:figma": "tsx src/import-figma.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dotenv": "^16.6.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

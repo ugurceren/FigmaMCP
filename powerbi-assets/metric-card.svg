@@ -1,0 +1,6 @@
+<svg width="240" height="96" viewBox="0 0 240 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="96" rx="10" fill="#FFFFFF"/>
+  <text x="18" y="24" fill="#006B54" font-family="Segoe UI, Arial, sans-serif" font-size="13">Metric Label</text>
+  <text x="18" y="62" fill="#006B54" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="500">2.000</text>
+  <line x1="0" y1="95.5" x2="240" y2="95.5" stroke="#BFD8D0"/>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "figma-local": {
+      "command": "cmd.exe",
+      "args": ["/c", "npm", "run", "dev"],
+      "cwd": "d:\\Code and Business\\FigmaMCP",
+      "env": {
+        "DOTENV_CONFIG_PATH": "d:\\Code and Business\\FigmaMCP\\.env"
+      }
+    }
+  }
+}
+

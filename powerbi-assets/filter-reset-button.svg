@@ -1,0 +1,5 @@
+<svg width="128" height="32" viewBox="0 0 128 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="127" height="31" rx="15.5" fill="#FFFFFF" stroke="#80B8A9"/>
+  <path d="M23 16h-10m0 0 5-5m-5 5 5 5" stroke="#006B54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="38" y="20" fill="#006B54" font-family="Segoe UI, Arial, sans-serif" font-size="12">Reset all filters</text>
+</svg>

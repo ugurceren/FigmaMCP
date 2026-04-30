@@ -1,0 +1,63 @@
+{
+  "name": "Kuveyt Turk Dashboard Theme",
+  "dataColors": [
+    "#006B54",
+    "#00A878",
+    "#D6A329",
+    "#83C5BE",
+    "#004B3A",
+    "#80B8A9",
+    "#BFD8D0",
+    "#F2C94C"
+  ],
+  "background": "#F3FAF7",
+  "foreground": "#004B3A",
+  "tableAccent": "#006B54",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "fontFamily": [
+          {
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#004B3A"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#E1F0EB"
+              }
+            },
+            "radius": 10
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}
