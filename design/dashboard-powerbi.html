@@ -1,0 +1,50 @@
+<style>
+:root{--fd-bg:#c8ecd4;--fd-blob-1:rgba(100,200,140,.45);--fd-blob-2:rgba(60,180,110,.3);--fd-blob-3:rgba(180,230,200,.25);--fd-card-bg:rgba(255,255,255,.38);--fd-card-border:rgba(255,255,255,.72);--fd-card-shadow:rgba(60,160,100,.10);--fd-header-bg:rgba(255,255,255,.35);--fd-toggle-bg:rgba(255,255,255,.45);--fd-toggle-border:rgba(255,255,255,.75)}
+[data-dark]{--fd-bg:#071a0c;--fd-blob-1:rgba(20,100,50,.55);--fd-blob-2:rgba(10,70,35,.45);--fd-blob-3:rgba(40,120,70,.30);--fd-card-bg:rgba(10,50,25,.55);--fd-card-border:rgba(50,160,90,.22);--fd-card-shadow:rgba(0,80,30,.30);--fd-header-bg:rgba(10,45,22,.60);--fd-toggle-bg:rgba(10,50,25,.60);--fd-toggle-border:rgba(60,180,100,.30)}
+*{box-sizing:border-box;margin:0;padding:0}
+#fd-root{position:relative;min-height:100vh;background:var(--fd-bg);overflow:hidden;transition:background .5s}
+#fd-root::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 15% 8%,var(--fd-blob-1) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 85%,var(--fd-blob-2) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 55% 45%,var(--fd-blob-3) 0%,transparent 55%);pointer-events:none;transition:background .5s}
+.fd-wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:28px 20px}
+.fd-header{height:68px;background:var(--fd-header-bg);border:1px solid var(--fd-card-border);border-radius:18px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 4px 20px var(--fd-card-shadow);margin-bottom:10px;transition:background .4s,border-color .4s}
+.fd-grid{display:grid;grid-template-columns:3fr 2fr 2fr;gap:10px}
+.fd-card{background:var(--fd-card-bg);border:1px solid var(--fd-card-border);border-radius:18px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 4px 20px var(--fd-card-shadow);transition:background .4s,border-color .4s}
+.c-analytics{grid-column:1;grid-row:1;min-height:270px}
+.c-spending{grid-column:2;grid-row:1;min-height:270px}
+.c-tx{grid-column:3;grid-row:1/3;min-height:400px}
+.c-m1{grid-column:1;grid-row:2;min-height:125px}
+.c-m2{grid-column:2;grid-row:2;min-height:125px}
+.c-accounts{grid-column:3;grid-row:2;min-height:190px}
+.c-m3{grid-column:1;grid-row:3;min-height:125px}
+.c-m4{grid-column:2;grid-row:3;min-height:125px}
+.c-savings{grid-column:3;grid-row:3;min-height:175px}
+.fd-btn{position:fixed;top:16px;right:20px;z-index:999;width:54px;height:28px;background:var(--fd-toggle-bg);border:1px solid var(--fd-toggle-border);border-radius:999px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 2px 10px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.25);cursor:pointer;display:flex;align-items:center;padding:2px;transition:background .4s,border-color .4s;outline:none}
+.fd-knob{width:22px;height:22px;border-radius:50%;background:linear-gradient(145deg,#fff,#e8f5ee);box-shadow:0 1px 4px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;font-size:12px;transform:translateX(0);transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .35s;user-select:none}
+[data-dark] .fd-knob{transform:translateX(24px);background:linear-gradient(145deg,#1a4d2e,#0f3320)}
+@media(max-width:1000px){.fd-grid{grid-template-columns:1fr 1fr}.c-analytics{grid-column:1/3;grid-row:auto}.c-spending,.c-tx,.c-accounts,.c-savings,.c-m1,.c-m2,.c-m3,.c-m4{grid-column:auto;grid-row:auto}}
+</style>
+
+<div id="fd-root">
+  <button class="fd-btn" id="tgl" onclick="toggle()"><span class="fd-knob" id="knob">☀️</span></button>
+  <div class="fd-wrap">
+    <div class="fd-header"></div>
+    <div class="fd-grid">
+      <div class="fd-card c-analytics"></div>
+      <div class="fd-card c-spending"></div>
+      <div class="fd-card c-tx"></div>
+      <div class="fd-card c-m1"></div>
+      <div class="fd-card c-m2"></div>
+      <div class="fd-card c-accounts"></div>
+      <div class="fd-card c-m3"></div>
+      <div class="fd-card c-m4"></div>
+      <div class="fd-card c-savings"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var root=document.getElementById('fd-root'),knob=document.getElementById('knob');
+var dark=localStorage.getItem('fd-dark')==='1';
+apply();
+function toggle(){dark=!dark;localStorage.setItem('fd-dark',dark?'1':'0');apply()}
+function apply(){dark?root.setAttribute('data-dark',''):root.removeAttribute('data-dark');knob.textContent=dark?'🌙':'☀️'}
+</script>
