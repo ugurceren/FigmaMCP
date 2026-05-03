@@ -1,0 +1,559 @@
+/* ─── Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+  --fd-accent:      #CCFF00;
+  --fd-bg:          #0d0d14;
+  --fd-card-bg:     rgba(255, 255, 255, 0.06);
+  --fd-card-border: rgba(255, 255, 255, 0.10);
+  --fd-text:        #FFFFFF;
+  --fd-text-muted:  rgba(255, 255, 255, 0.50);
+  --fd-green:       #4CAF50;
+  --fd-red:         #FF4D4D;
+  --fd-radius:      20px;
+  --fd-radius-sm:   12px;
+  --fd-gap:         12px;
+}
+
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+.fd-root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+  color: var(--fd-text);
+  overflow: hidden;
+}
+
+.fd-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(80, 60, 180, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(40, 100, 80, 0.35) 0%, transparent 60%),
+    var(--fd-bg);
+  z-index: 0;
+}
+
+.fd-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  padding: 32px 24px;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+.fd-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.fd-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.fd-subtitle {
+  font-size: 14px;
+  color: var(--fd-text-muted);
+  margin: 4px 0 0;
+}
+
+.fd-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fd-tabs {
+  display: flex;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.fd-tab {
+  border: none;
+  background: transparent;
+  color: var(--fd-text-muted);
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.fd-tab--active {
+  background: rgba(255,255,255,0.15);
+  color: var(--fd-text);
+}
+
+.fd-tab--icon { display: flex; align-items: center; gap: 6px; }
+
+.fd-icon-btn {
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: var(--fd-text);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.fd-icon-btn:hover { background: rgba(255,255,255,0.15); }
+.fd-icon-btn--accent { background: rgba(204,255,0,0.15); color: var(--fd-accent); }
+
+.fd-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  flex-shrink: 0;
+}
+
+.fd-balance {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+/* ─── Grid ────────────────────────────────────────────────────────────────── */
+.fd-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr;
+  grid-template-rows: auto auto auto;
+  gap: var(--fd-gap);
+}
+
+/* ─── Card base ───────────────────────────────────────────────────────────── */
+.fd-card {
+  background: var(--fd-card-bg);
+  border: 1px solid var(--fd-card-border);
+  border-radius: var(--fd-radius);
+  padding: 20px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fd-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fd-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fd-text);
+}
+
+.fd-card-meta {
+  color: var(--fd-text-muted);
+  font-size: 14px;
+}
+
+.fd-card-subtitle {
+  font-size: 12px;
+  color: var(--fd-text-muted);
+  margin: 0;
+}
+
+.fd-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─── Pills ───────────────────────────────────────────────────────────────── */
+.fd-pill {
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: var(--fd-text-muted);
+  padding: 5px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.fd-pill--active {
+  background: rgba(255,255,255,0.18);
+  color: var(--fd-text);
+}
+
+/* ─── Badges ──────────────────────────────────────────────────────────────── */
+.fd-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.fd-badge--green { background: rgba(76,175,80,0.2); color: var(--fd-green); }
+.fd-badge--red   { background: rgba(255,77,77,0.2);  color: var(--fd-red); font-size: 10px; }
+
+/* ─── Change indicators ───────────────────────────────────────────────────── */
+.fd-up   { color: var(--fd-red); font-size: 12px; }
+.fd-down { color: var(--fd-green); font-size: 12px; }
+
+/* ─── Analytics card ──────────────────────────────────────────────────────── */
+.fd-card--analytics {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.fd-analytics-cats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.fd-analytics-cat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+}
+
+.fd-cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fd-cat-label { color: var(--fd-text-muted); }
+.fd-cat-value { font-weight: 600; }
+
+.fd-chart-area {
+  position: relative;
+  flex: 1;
+  min-height: 120px;
+}
+
+.fd-line-chart {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.fd-chart-tooltip {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  transform: translateX(-50%);
+  background: rgba(30,30,45,0.95);
+  border: 1px solid var(--fd-card-border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.fd-chart-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--fd-text-muted);
+}
+
+/* ─── Total spending card ─────────────────────────────────────────────────── */
+.fd-card--spending {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.fd-spending-amount {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+
+.fd-bar-wrapper {
+  position: relative;
+  flex: 1;
+  min-height: 100px;
+}
+
+.fd-bar-chart {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.fd-bar-tooltip {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  background: rgba(30,30,45,0.95);
+  border: 1px solid var(--fd-card-border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 11px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ─── Transactions card ───────────────────────────────────────────────────── */
+.fd-card--transactions {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+.fd-tx-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fd-tx-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fd-tx-icon {
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.fd-tx-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.fd-tx-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-tx-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--fd-text-muted);
+}
+
+.fd-tx-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.fd-tx-amount {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ─── Metric cards ────────────────────────────────────────────────────────── */
+.fd-card--metric {
+  grid-row: 2;
+  min-height: 120px;
+}
+
+.fd-metric-change {
+  font-size: 12px;
+}
+
+.fd-metric-sub {
+  font-size: 12px;
+  color: var(--fd-text-muted);
+}
+
+.fd-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-top: auto;
+}
+
+.fd-metric-subvalue {
+  font-size: 13px;
+  color: var(--fd-text-muted);
+}
+
+/* Income and Expenses sit in row 2 columns 1 and 2 */
+.fd-grid > .fd-card--metric:nth-child(4) { grid-column: 1; grid-row: 2; }
+.fd-grid > .fd-card--metric:nth-child(5) { grid-column: 2; grid-row: 2; }
+.fd-grid > .fd-card--metric:nth-child(8) { grid-column: 1; grid-row: 3; }
+.fd-grid > .fd-card--metric:nth-child(9) { grid-column: 2; grid-row: 3; }
+
+/* ─── Savings card ────────────────────────────────────────────────────────── */
+.fd-card--savings {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* ─── Accounts card ───────────────────────────────────────────────────────── */
+.fd-card--accounts {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.fd-account-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fd-account-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--fd-radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fd-account-item--highlight {
+  background: var(--fd-accent);
+  color: #000;
+}
+
+.fd-account-brand {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.fd-account-brand--mastercard { color: #FF6B35; }
+.fd-account-brand--visa { font-style: italic; }
+
+.fd-account-item--highlight .fd-account-brand { color: #000; }
+
+.fd-account-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* ─── Progress bar ────────────────────────────────────────────────────────── */
+.fd-progress-track {
+  height: 6px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.fd-progress-fill {
+  height: 100%;
+  background: var(--fd-accent);
+  border-radius: 99px;
+  transition: width 0.6s ease;
+}
+
+/* ─── Saving item ─────────────────────────────────────────────────────────── */
+.fd-saving-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fd-saving-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fd-saving-pct {
+  font-size: 12px;
+  color: var(--fd-accent);
+  font-weight: 600;
+}
+
+.fd-saving-info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.fd-saving-current { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+.fd-saving-label   { font-size: 12px; color: var(--fd-text-muted); flex: 1; text-align: center; }
+.fd-saving-goal    { font-size: 12px; color: var(--fd-text-muted); }
+
+/* ─── Add widget card ─────────────────────────────────────────────────────── */
+.fd-card--add {
+  grid-column: 3;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.fd-card--add:hover { background: rgba(255,255,255,0.1); }
+
+.fd-add-icon {
+  font-size: 28px;
+  color: var(--fd-text-muted);
+}
+
+.fd-add-label {
+  font-size: 14px;
+  color: var(--fd-text-muted);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .fd-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .fd-card--analytics   { grid-column: 1 / 3; grid-row: auto; }
+  .fd-card--spending    { grid-column: 1; grid-row: auto; }
+  .fd-card--transactions { grid-column: 2; grid-row: auto; }
+  .fd-card--accounts    { grid-column: 1; grid-row: auto; }
+  .fd-card--savings     { grid-column: 2; grid-row: auto; }
+  .fd-card--add         { grid-column: 1 / 3; grid-row: auto; }
+  .fd-grid > .fd-card--metric { grid-column: auto; grid-row: auto; }
+}
+
+@media (max-width: 680px) {
+  .fd-grid { grid-template-columns: 1fr; }
+  .fd-card--analytics, .fd-card--transactions, .fd-card--savings,
+  .fd-card--add { grid-column: 1; }
+  .fd-title { font-size: 28px; }
+}
