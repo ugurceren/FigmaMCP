@@ -4,8 +4,8 @@
     "version": "1.0.0",
     "description": "Power BI tema ve layout rehberi — dashboard-shell.html ile birebir eşleşir",
     "htmlShell": "powerbi-assets/dashboard-shell.html",
-    "themeFile": "powerbi-assets/powerbi-theme.json",
-    "usage": "Power BI Desktop → View → Themes → Browse for themes → powerbi-theme.json seç"
+    "themeFile": "powerbi-assets/kt-glassmorphism-theme.json",
+    "usage": "Power BI Desktop → View → Themes → Browse for themes → kt-glassmorphism-theme.json seç"
   },
 
   "$colors": {
@@ -349,7 +349,7 @@
   },
 
   "powerBISetupSteps": [
-    "1. Power BI Desktop → View → Themes → Browse for themes → powerbi-theme.json'ı içe aktar",
+    "1. Power BI Desktop → View → Themes → Browse for themes → kt-glassmorphism-theme.json'ı içe aktar",
     "2. View → Page view → Actual size (1280×780 referans)",
     "3. Format → Page background → Color: #c8ecd4, Transparency: 0",
     "4. AppSource'dan 'HTML Content' veya 'HTML Viewer' visualini yükle",
