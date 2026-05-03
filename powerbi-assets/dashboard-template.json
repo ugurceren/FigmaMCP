@@ -1,0 +1,361 @@
+{
+  "$info": {
+    "name": "Kuveyt Türk Glassmorphism Dashboard",
+    "version": "1.0.0",
+    "description": "Power BI tema ve layout rehberi — dashboard-shell.html ile birebir eşleşir",
+    "htmlShell": "powerbi-assets/dashboard-shell.html",
+    "themeFile": "powerbi-assets/powerbi-theme.json",
+    "usage": "Power BI Desktop → View → Themes → Browse for themes → powerbi-theme.json seç"
+  },
+
+  "$colors": {
+    "note": "Kuveyt Türk resmi renk paleti",
+    "primaryGreen":  "#006B3C",
+    "darkGreen":     "#004B3A",
+    "midGreen":      "#00A878",
+    "lightGreenBg":  "#c8ecd4",
+    "darkBg":        "#071a0c",
+    "gold":          "#D6A329",
+    "lightGold":     "#F2C94C",
+    "white":         "#FFFFFF",
+    "glassLight":    "rgba(255,255,255,0.38)",
+    "glassDark":     "rgba(10,50,25,0.55)",
+    "borderLight":   "rgba(255,255,255,0.72)",
+    "borderDark":    "rgba(50,160,90,0.22)"
+  },
+
+  "powerBITheme": {
+    "name": "Kuveyt Türk Glassmorphism",
+    "dataColors": [
+      "#006B3C",
+      "#00A878",
+      "#D6A329",
+      "#004B3A",
+      "#83C5BE",
+      "#F2C94C",
+      "#80B8A9",
+      "#BFD8D0"
+    ],
+    "background":   "#c8ecd4",
+    "foreground":   "#004B3A",
+    "tableAccent":  "#006B3C",
+    "visualStyles": {
+      "*": {
+        "*": {
+          "fontFamily": [{ "fontFamily": "Segoe UI" }],
+          "fontSize":   [{ "fontSize": 12 }],
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "shadow": [{ "show": true }],
+          "title": [{
+            "show": true,
+            "fontColor": { "solid": { "color": "#004B3A" } },
+            "background": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 100,
+            "fontSize": 13,
+            "fontFamily": "Segoe UI",
+            "bold": true
+          }]
+        }
+      },
+      "card": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "labels": [{
+            "color": { "solid": { "color": "#004B3A" } },
+            "fontSize": 28,
+            "fontFamily": "Segoe UI",
+            "bold": true
+          }],
+          "categoryLabels": [{
+            "show": true,
+            "color": { "solid": { "color": "#006B3C" } },
+            "fontSize": 12
+          }]
+        }
+      },
+      "lineChart": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "valueAxis": [{
+            "gridlineColor": { "solid": { "color": "rgba(0,75,58,0.15)" } }
+          }],
+          "categoryAxis": [{
+            "labelColor": { "solid": { "color": "#004B3A" } }
+          }]
+        }
+      },
+      "barChart": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "dataPoint": [{
+            "defaultColor": { "solid": { "color": "#006B3C" } }
+          }]
+        }
+      },
+      "columnChart": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "dataPoint": [{
+            "defaultColor": { "solid": { "color": "#006B3C" } }
+          }]
+        }
+      },
+      "donutChart": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }]
+        }
+      },
+      "gauge": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "dataLabels": [{
+            "color": { "solid": { "color": "#004B3A" } }
+          }]
+        }
+      },
+      "table": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "grid": [{
+            "gridVertical": false,
+            "gridHorizontalColor": { "solid": { "color": "rgba(0,107,60,0.12)" } },
+            "outlineColor": { "solid": { "color": "rgba(255,255,255,0.72)" } },
+            "rowPadding": 6
+          }],
+          "header": [{
+            "fontColor": { "solid": { "color": "#FFFFFF" } },
+            "backColor": { "solid": { "color": "#006B3C" } },
+            "fontSize": 12,
+            "bold": true
+          }],
+          "rows": [{
+            "fontColor": { "solid": { "color": "#004B3A" } },
+            "backColor": { "solid": { "color": "rgba(255,255,255,0)" } },
+            "fontSize": 12
+          }]
+        }
+      },
+      "matrix": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }]
+        }
+      },
+      "slicer": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }],
+          "data": [{
+            "fontColor": { "solid": { "color": "#004B3A" } },
+            "fontSize": 12
+          }],
+          "header": [{
+            "fontColor": { "solid": { "color": "#006B3C" } },
+            "bold": true
+          }]
+        }
+      },
+      "kpiVisual": {
+        "*": {
+          "background": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 62
+          }],
+          "border": [{
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "radius": 18
+          }]
+        }
+      }
+    }
+  },
+
+  "layout": {
+    "note": "dashboard-shell.html grid yapısıyla birebir eşleşen koordinatlar (px). Canvas: 1280×780",
+    "canvas": { "width": 1280, "height": 780 },
+    "padding": { "top": 28, "right": 20, "bottom": 28, "left": 20 },
+    "gap": 10,
+
+    "htmlViewer": {
+      "slot": "header_area",
+      "x": 0, "y": 0,
+      "width": 1280, "height": 780,
+      "note": "HTML Viewer / HTML Content visual tam canvas boyutunda, en arkaya yerleştir (Maintain layer order: On)"
+    },
+
+    "slots": [
+      {
+        "id": "header",
+        "label": "Başlık / Filtre çubuğu",
+        "x": 20,  "y": 28,
+        "width": 1240, "height": 68,
+        "suggestedVisual": "Slicer veya boş bırak"
+      },
+      {
+        "id": "analytics",
+        "label": "Analitik — Büyük grafik",
+        "col": 1, "row": 1,
+        "x": 20,  "y": 106,
+        "width": 526, "height": 270,
+        "suggestedVisual": "Line chart / Area chart"
+      },
+      {
+        "id": "spending",
+        "label": "Toplam harcama / Özet",
+        "col": 2, "row": 1,
+        "x": 556, "y": 106,
+        "width": 350, "height": 270,
+        "suggestedVisual": "Clustered bar chart / KPI"
+      },
+      {
+        "id": "transactions",
+        "label": "İşlem listesi — Uzun sağ kolon",
+        "col": 3, "row": "1-2",
+        "x": 916, "y": 106,
+        "width": 344, "height": 405,
+        "suggestedVisual": "Table / Matrix"
+      },
+      {
+        "id": "metric_1",
+        "label": "Metrik kart 1",
+        "col": 1, "row": 2,
+        "x": 20,  "y": 386,
+        "width": 526, "height": 125,
+        "suggestedVisual": "Card / KPI visual"
+      },
+      {
+        "id": "metric_2",
+        "label": "Metrik kart 2",
+        "col": 2, "row": 2,
+        "x": 556, "y": 386,
+        "width": 350, "height": 125,
+        "suggestedVisual": "Card / KPI visual"
+      },
+      {
+        "id": "metric_3",
+        "label": "Metrik kart 3",
+        "col": 1, "row": 3,
+        "x": 20,  "y": 521,
+        "width": 526, "height": 125,
+        "suggestedVisual": "Card / KPI visual"
+      },
+      {
+        "id": "metric_4",
+        "label": "Metrik kart 4",
+        "col": 2, "row": 3,
+        "x": 556, "y": 521,
+        "width": 350, "height": 125,
+        "suggestedVisual": "Card / KPI visual"
+      },
+      {
+        "id": "accounts",
+        "label": "Hesaplar / Dağılım",
+        "col": 3, "row": 2,
+        "x": 916, "y": 521,
+        "width": 344, "height": 175,
+        "suggestedVisual": "Donut chart / Gauge"
+      }
+    ]
+  },
+
+  "powerBISetupSteps": [
+    "1. Power BI Desktop → View → Themes → Browse for themes → powerbi-theme.json'ı içe aktar",
+    "2. View → Page view → Actual size (1280×780 referans)",
+    "3. Format → Page background → Color: #c8ecd4, Transparency: 0",
+    "4. AppSource'dan 'HTML Content' veya 'HTML Viewer' visualini yükle",
+    "5. Home → Enter Data → HTML sütunu → dashboard-shell.html içeriğini yapıştır → Tablo adı: Shell",
+    "6. HTML visual'ı canvas'a ekle → tam sayfaya (0,0,1280,780) boyutlandır → en arkaya gönder",
+    "7. Her slot için ilgili visual'ı ekle → Format → Background → Off → pozisyonu 'layout.slots' koordinatlarına göre ayarla",
+    "8. Tüm visual başlıklarını gizle (görsel başlıkların arkası glass karttaki gibi şeffaf görünsün)"
+  ]
+}
