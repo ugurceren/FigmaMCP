@@ -3,40 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Financial Dashboard – Preview</title>
+  <title>Financial Dashboard – Shell</title>
   <style>
-    /* ─── Tokens ─────────────────────────────────────────────────── */
     :root {
-      --fd-accent:      #CCFF00;
-      --fd-bg:          #0d0d14;
-      --fd-card-bg:     rgba(255, 255, 255, 0.06);
-      --fd-card-border: rgba(255, 255, 255, 0.10);
-      --fd-text:        #FFFFFF;
-      --fd-text-muted:  rgba(255, 255, 255, 0.50);
-      --fd-green:       #4CAF50;
-      --fd-red:         #FF4D4D;
+      --fd-bg:          #c8ecd4;
+      --fd-card-bg:     rgba(255, 255, 255, 0.38);
+      --fd-card-border: rgba(255, 255, 255, 0.70);
       --fd-radius:      20px;
       --fd-radius-sm:   12px;
       --fd-gap:         12px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
-      color: var(--fd-text);
       background: var(--fd-bg);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* Blurred background blobs */
+    /* subtle blobs matching the green tone */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(80,60,180,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 50% at 80% 80%, rgba(40,100,80,0.35) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 55% at 15% 8%,  rgba(100, 200, 140, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 85%, rgba(60,  180, 110, 0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 55% 45%, rgba(180, 230, 200, 0.25) 0%, transparent 55%);
       pointer-events: none;
       z-index: 0;
     }
@@ -49,54 +43,16 @@
       padding: 32px 24px;
     }
 
-    /* ─── Header ─────────────────────────────────────────────────── */
+    /* ─── Header bar (empty shell) ───────────────────────────────── */
     .fd-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 24px;
+      height: 72px;
+      background: var(--fd-card-bg);
+      border: 1px solid var(--fd-card-border);
+      border-radius: var(--fd-radius);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      margin-bottom: var(--fd-gap);
     }
-    .fd-title { font-size: 42px; font-weight: 700; letter-spacing: -1px; }
-    .fd-subtitle { font-size: 14px; color: var(--fd-text-muted); margin-top: 4px; }
-    .fd-header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
-    .fd-tabs {
-      display: flex;
-      background: rgba(255,255,255,0.08);
-      border-radius: 50px;
-      padding: 4px;
-      gap: 2px;
-    }
-    .fd-tab {
-      border: none;
-      background: transparent;
-      color: var(--fd-text-muted);
-      padding: 8px 16px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background .2s, color .2s;
-    }
-    .fd-tab.active { background: rgba(255,255,255,0.15); color: var(--fd-text); }
-
-    .fd-icon-btn {
-      border: none;
-      background: rgba(255,255,255,0.08);
-      color: var(--fd-text);
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .fd-avatar {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #a78bfa, #60a5fa);
-    }
-    .fd-balance { font-size: 16px; font-weight: 600; }
 
     /* ─── Grid ───────────────────────────────────────────────────── */
     .fd-grid {
@@ -105,426 +61,67 @@
       gap: var(--fd-gap);
     }
 
-    /* ─── Cards ──────────────────────────────────────────────────── */
+    /* ─── Card base ──────────────────────────────────────────────── */
     .fd-card {
       background: var(--fd-card-bg);
       border: 1px solid var(--fd-card-border);
       border-radius: var(--fd-radius);
-      padding: 20px;
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .fd-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .fd-card-title { font-size: 15px; font-weight: 600; }
-    .fd-card-meta, .fd-card-subtitle { font-size: 12px; color: var(--fd-text-muted); }
-
-    /* Analytics */
-    .fd-card--analytics { grid-column: 1; grid-row: 1 / 2; }
-
-    .fd-analytics-cats { display: flex; gap: 20px; flex-wrap: wrap; }
-    .fd-analytics-cat  { display: flex; align-items: center; gap: 5px; font-size: 13px; }
-    .fd-cat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .fd-cat-label { color: var(--fd-text-muted); }
-    .fd-cat-value { font-weight: 600; }
-    .fd-cat-change-up   { color: var(--fd-red);   font-size: 12px; }
-    .fd-cat-change-down { color: var(--fd-green); font-size: 12px; }
-
-    .fd-chart-area { position: relative; min-height: 130px; }
-    .fd-line-chart { width: 100%; height: 100%; display: block; }
-
-    .fd-chart-tooltip {
-      position: absolute; top: 42%; left: 54%;
-      transform: translateX(-50%);
-      background: rgba(30,30,45,0.95);
-      border: 1px solid var(--fd-card-border);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 12px;
-      display: flex; flex-direction: column; gap: 2px;
-      pointer-events: none; white-space: nowrap;
-    }
-    .fd-chart-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--fd-text-muted);
+      box-shadow: 0 4px 24px rgba(60, 160, 100, 0.08);
     }
 
-    /* Spending */
-    .fd-card--spending { grid-column: 2; grid-row: 1; }
-    .fd-spending-amount { font-size: 32px; font-weight: 700; letter-spacing: -1.5px; }
-    .fd-bar-wrapper { position: relative; flex: 1; min-height: 100px; }
-    .fd-bar-chart { width: 100%; height: 100%; display: block; }
-    .fd-bar-tooltip {
-      position: absolute; top: 20%; left: 25%;
-      background: rgba(30,30,45,0.95);
-      border: 1px solid var(--fd-card-border);
-      border-radius: 10px;
-      padding: 6px 10px; font-size: 11px;
-      pointer-events: none; white-space: nowrap;
-    }
+    /* ─── Card sizes ─────────────────────────────────────────────── */
+    .fd-card--analytics    { grid-column: 1; grid-row: 1; min-height: 280px; }
+    .fd-card--spending     { grid-column: 2; grid-row: 1; min-height: 280px; }
+    .fd-card--transactions { grid-column: 3; grid-row: 1 / 3; min-height: 420px; }
 
-    /* Transactions */
-    .fd-card--transactions { grid-column: 3; grid-row: 1 / 3; }
-    .fd-tx-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .fd-tx-item { display: flex; align-items: center; gap: 12px; }
-    .fd-tx-icon {
-      font-size: 20px; width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.07); border-radius: 10px; flex-shrink: 0;
-    }
-    .fd-tx-info { flex: 1; min-width: 0; }
-    .fd-tx-name { display: block; font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .fd-tx-sub  { display: block; font-size: 11px; color: var(--fd-text-muted); }
-    .fd-tx-right { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
-    .fd-tx-amount { font-size: 14px; font-weight: 600; }
+    .fd-grid > .fd-card--metric:nth-child(4) { grid-column: 1; grid-row: 2; min-height: 130px; }
+    .fd-grid > .fd-card--metric:nth-child(5) { grid-column: 2; grid-row: 2; min-height: 130px; }
 
-    /* Metric cards */
-    .fd-card--metric { min-height: 120px; }
-    .fd-grid > .fd-card--metric:nth-child(4) { grid-column: 1; grid-row: 2; }
-    .fd-grid > .fd-card--metric:nth-child(5) { grid-column: 2; grid-row: 2; }
-    .fd-grid > .fd-card--metric:nth-child(8) { grid-column: 1; grid-row: 3; }
-    .fd-grid > .fd-card--metric:nth-child(9) { grid-column: 2; grid-row: 3; }
-    .fd-metric-value { font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-top: auto; }
-    .fd-metric-sub   { font-size: 12px; color: var(--fd-text-muted); }
-    .fd-up   { color: var(--fd-red);   font-size: 12px; }
-    .fd-down { color: var(--fd-green); font-size: 12px; }
+    .fd-card--accounts { grid-column: 3; grid-row: 2; min-height: 200px; }
+    .fd-card--savings  { grid-column: 3; grid-row: 3; min-height: 180px; }
 
-    /* Savings */
-    .fd-card--savings { grid-column: 3; grid-row: 3; }
-    .fd-saving-item { display: flex; flex-direction: column; gap: 6px; }
-    .fd-saving-header { display: flex; justify-content: flex-end; }
-    .fd-saving-pct { font-size: 12px; color: var(--fd-accent); font-weight: 600; }
-    .fd-progress-track { height: 6px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden; }
-    .fd-progress-fill { height: 100%; background: var(--fd-accent); border-radius: 99px; }
-    .fd-saving-info { display: flex; align-items: baseline; justify-content: space-between; gap: 4px; }
-    .fd-saving-current { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
-    .fd-saving-label   { font-size: 12px; color: var(--fd-text-muted); flex: 1; text-align: center; }
-    .fd-saving-goal    { font-size: 12px; color: var(--fd-text-muted); }
+    .fd-grid > .fd-card--metric:nth-child(8) { grid-column: 1; grid-row: 3; min-height: 130px; }
+    .fd-grid > .fd-card--metric:nth-child(9) { grid-column: 2; grid-row: 3; min-height: 130px; }
 
-    /* Accounts */
-    .fd-card--accounts { grid-column: 3; grid-row: 2; }
-    .fd-account-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .fd-account-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 14px;
-      background: rgba(255,255,255,0.05);
-      border-radius: var(--fd-radius-sm);
-      font-size: 14px; font-weight: 500;
-    }
-    .fd-account-item--highlight { background: var(--fd-accent); color: #000; }
-    .fd-account-brand { font-size: 12px; font-weight: 700; letter-spacing: 1px; }
-    .fd-account-brand--mc { color: #FF6B35; }
-    .fd-account-brand--visa { font-style: italic; }
-    .fd-account-item--highlight .fd-account-brand { color: #000; }
-
-    /* Add widget */
-    .fd-card--add {
-      grid-column: 3; grid-row: 4;
-      align-items: center; justify-content: center;
-      border-style: dashed; cursor: pointer;
-    }
-    .fd-add-icon  { font-size: 28px; color: var(--fd-text-muted); }
-    .fd-add-label { font-size: 14px; color: var(--fd-text-muted); }
-
-    /* Badge */
-    .fd-badge-green { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: rgba(76,175,80,0.2); color: var(--fd-green); }
-    .fd-badge-red   { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: rgba(255,77,77,0.2); color: var(--fd-red); }
-
-    /* Pills */
-    .fd-pill {
-      border: none; background: rgba(255,255,255,0.08); color: var(--fd-text-muted);
-      padding: 5px 12px; border-radius: 50px; cursor: pointer; font-size: 12px;
-    }
-    .fd-pill.active { background: rgba(255,255,255,0.18); color: var(--fd-text); }
-
-    /* Responsive */
+    /* ─── Responsive ─────────────────────────────────────────────── */
     @media (max-width: 1100px) {
       .fd-grid { grid-template-columns: 1fr 1fr; }
       .fd-card--analytics   { grid-column: 1 / 3; grid-row: auto; }
-      .fd-card--spending    { grid-column: 1; grid-row: auto; }
-      .fd-card--transactions { grid-column: 2; grid-row: auto; }
-      .fd-card--accounts    { grid-column: 1; grid-row: auto; }
-      .fd-card--savings     { grid-column: 2; grid-row: auto; }
-      .fd-card--add         { grid-column: 1 / 3; grid-row: auto; }
+      .fd-card--spending    { grid-column: 1;     grid-row: auto; }
+      .fd-card--transactions { grid-column: 2;    grid-row: auto; }
+      .fd-card--accounts    { grid-column: 1;     grid-row: auto; }
+      .fd-card--savings     { grid-column: 2;     grid-row: auto; }
       .fd-grid > .fd-card--metric { grid-column: auto !important; grid-row: auto !important; }
     }
+
     @media (max-width: 680px) {
       .fd-grid { grid-template-columns: 1fr; }
-      .fd-card--analytics, .fd-card--transactions, .fd-card--savings, .fd-card--add { grid-column: 1; }
-      .fd-title { font-size: 28px; }
+      .fd-card--analytics, .fd-card--transactions,
+      .fd-card--savings, .fd-card--accounts { grid-column: 1; }
     }
   </style>
 </head>
 <body>
 <div class="fd-container">
 
-  <!-- Header -->
-  <header class="fd-header">
-    <div>
-      <h1 class="fd-title">Financial summary</h1>
-      <p class="fd-subtitle">Track your monthly activities</p>
-    </div>
-    <div class="fd-header-right">
-      <div class="fd-tabs" id="tabs">
-        <button class="fd-tab" onclick="setTab(this)">Today</button>
-        <button class="fd-tab active" onclick="setTab(this)">This month</button>
-        <button class="fd-tab" onclick="setTab(this)">📅 Date</button>
-      </div>
-      <button class="fd-icon-btn">⬇</button>
-      <div class="fd-avatar"></div>
-      <span class="fd-balance">$156,834.42</span>
-      <button class="fd-icon-btn">👁</button>
-    </div>
-  </header>
+  <!-- Header shell -->
+  <div class="fd-header"></div>
 
   <!-- Grid -->
   <div class="fd-grid">
+    <div class="fd-card fd-card--analytics"></div>
+    <div class="fd-card fd-card--spending"></div>
+    <div class="fd-card fd-card--transactions"></div>
+    <div class="fd-card fd-card--metric"></div>
+    <div class="fd-card fd-card--metric"></div>
+    <div class="fd-card fd-card--accounts"></div>
+    <div class="fd-card fd-card--metric"></div>
+    <div class="fd-card fd-card--metric"></div>
+    <div class="fd-card fd-card--savings"></div>
+  </div>
 
-    <!-- Analytics -->
-    <div class="fd-card fd-card--analytics">
-      <div class="fd-card-header">
-        <span class="fd-card-title">Analitics</span>
-        <div style="display:flex;gap:6px;align-items:center">
-          <button class="fd-pill active" onclick="togglePill(this)">Expenses</button>
-          <button class="fd-pill" onclick="togglePill(this)">Income</button>
-          <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px">〰</button>
-          <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px">↗</button>
-        </div>
-      </div>
-      <div class="fd-analytics-cats">
-        <div class="fd-analytics-cat">
-          <span class="fd-cat-dot" style="background:#FF6B6B"></span>
-          <span class="fd-cat-label">Shopping</span>
-          <span class="fd-cat-change-up">↑ 12.2%</span>
-          <span class="fd-cat-value">$3,312.00</span>
-        </div>
-        <div class="fd-analytics-cat">
-          <span class="fd-cat-dot" style="background:#4ECDC4"></span>
-          <span class="fd-cat-label">Entertain...</span>
-          <span class="fd-cat-change-down">↓ 12.2%</span>
-          <span class="fd-cat-value">$1,521.00</span>
-        </div>
-        <div class="fd-analytics-cat">
-          <span class="fd-cat-dot" style="background:#FFE66D"></span>
-          <span class="fd-cat-label">Utility</span>
-          <span class="fd-cat-value">$4,220.00</span>
-        </div>
-      </div>
-      <div class="fd-chart-area">
-        <svg class="fd-line-chart" viewBox="0 0 400 100" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <polygon points="0,60 40,50 80,70 120,40 160,80 200,30 240,55 280,45 320,60 360,35 400,50 400,100 0,100"
-                   fill="url(#areaGrad)"/>
-          <polyline points="0,60 40,50 80,70 120,40 160,80 200,30 240,55 280,45 320,60 360,35 400,50"
-                    fill="none" stroke="#CCFF00" stroke-width="2.5" stroke-linejoin="round"/>
-          <circle cx="160" cy="80" r="5" fill="#CCFF00"/>
-        </svg>
-        <div class="fd-chart-tooltip">
-          <span>🛍 Shopping</span>
-          <strong>$3,844.00 🎯</strong>
-        </div>
-      </div>
-      <div class="fd-chart-labels">
-        <span>24 Apr</span><span>18 Mr</span><span>24 Mr</span>
-      </div>
-    </div>
-
-    <!-- Total Spending -->
-    <div class="fd-card fd-card--spending">
-      <div class="fd-card-header">
-        <span class="fd-card-title">Total spending</span>
-        <span class="fd-badge-green">+$1450.22</span>
-      </div>
-      <p class="fd-card-subtitle">This week</p>
-      <div class="fd-spending-amount">$16,896.22</div>
-      <div class="fd-bar-wrapper">
-        <svg class="fd-bar-chart" viewBox="0 352 0" preserveAspectRatio="none">
-          <rect x="0"   y="14" width="36" height="106" rx="6" fill="rgba(255,255,255,0.15)"/>
-          <rect x="44"  y="33" width="36" height="87"  rx="6" fill="rgba(255,255,255,0.15)"/>
-          <rect x="88"  y="56" width="36" height="64"  rx="6" fill="rgba(255,255,255,0.15)"/>
-          <rect x="132" y="77" width="36" height="43"  rx="6" fill="#CCFF00"/>
-          <rect x="176" y="96" width="36" height="24"  rx="6" fill="rgba(255,255,255,0.15)"/>
-          <rect x="220" y="96" width="36" height="24"  rx="6" fill="rgba(255,255,255,0.15)"/>
-          <rect x="264" y="99" width="36" height="21"  rx="6" fill="rgba(255,255,255,0.15)"/>
-          <rect x="308" y="110" width="36" height="10" rx="6" fill="rgba(255,255,255,0.15)"/>
-        </svg>
-        <div class="fd-bar-tooltip">+$140.22 from Apr 24 🔥</div>
-      </div>
-    </div>
-
-    <!-- Transactions -->
-    <div class="fd-card fd-card--transactions">
-      <div class="fd-card-header">
-        <div>
-          <span class="fd-card-title">Resent Transactions</span>
-          <span class="fd-card-meta"> ↗</span>
-        </div>
-        <span class="fd-card-subtitle">342 reports</span>
-      </div>
-      <ul class="fd-tx-list">
-        <li class="fd-tx-item">
-          <span class="fd-tx-icon">🖥️</span>
-          <div class="fd-tx-info">
-            <span class="fd-tx-name">Hewlett-Packard (HP)</span>
-            <span class="fd-tx-sub">HSBC · 24min ago</span>
-          </div>
-          <div class="fd-tx-right"><span class="fd-tx-amount">$8000.00</span></div>
-        </li>
-        <li class="fd-tx-item">
-          <span class="fd-tx-icon">📦</span>
-          <div class="fd-tx-info">
-            <span class="fd-tx-name">Amazon.com, Inc.</span>
-            <span class="fd-tx-sub">HSBC · Apple pay · 1h ago</span>
-          </div>
-          <div class="fd-tx-right"><span class="fd-tx-amount">$102.24</span></div>
-        </li>
-        <li class="fd-tx-item">
-          <span class="fd-tx-icon">🎨</span>
-          <div class="fd-tx-info">
-            <span class="fd-tx-name">Dribbble Co</span>
-            <span class="fd-tx-sub">Revolut · POS · Yesterday</span>
-          </div>
-          <div class="fd-tx-right">
-            <span class="fd-tx-amount">$60.49</span>
-            <span class="fd-badge-red">DECLINED</span>
-          </div>
-        </li>
-        <li class="fd-tx-item">
-          <span class="fd-tx-icon">☕</span>
-          <div class="fd-tx-info">
-            <span class="fd-tx-name">Costa coffee</span>
-            <span class="fd-tx-sub">AMEX · Apple pay · Yesterday</span>
-          </div>
-          <div class="fd-tx-right"><span class="fd-tx-amount">$3.80</span></div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Income -->
-    <div class="fd-card fd-card--metric">
-      <div class="fd-card-header">
-        <span class="fd-card-title">Income</span>
-        <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px">↗</button>
-      </div>
-      <span class="fd-down">↓ -7.2% Higher</span>
-      <div class="fd-metric-value">$12,800.00</div>
-    </div>
-
-    <!-- Expenses -->
-    <div class="fd-card fd-card--metric">
-      <div class="fd-card-header">
-        <span class="fd-card-title">Expenses</span>
-        <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px">↗</button>
-      </div>
-      <span class="fd-up">↑ +12.2% Higher</span>
-      <div class="fd-metric-value">$16,800.00</div>
-    </div>
-
-    <!-- Accounts -->
-    <div class="fd-card fd-card--accounts">
-      <div class="fd-card-header">
-        <span class="fd-card-title">My Accounts</span>
-        <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px;background:rgba(204,255,0,0.15);color:#CCFF00">+</button>
-      </div>
-      <ul class="fd-account-list">
-        <li class="fd-account-item">
-          <span>**** 8892</span>
-          <span class="fd-account-brand fd-account-brand--mc">⬤⬤</span>
-        </li>
-        <li class="fd-account-item">
-          <span>**** 7712</span>
-          <span class="fd-account-brand fd-account-brand--visa">VISA</span>
-        </li>
-        <li class="fd-account-item fd-account-item--highlight">
-          <span>**** 2241</span>
-          <div style="display:flex;flex-direction:column;font-size:12px;opacity:.75">
-            <span>$16,800.00</span><span>04/25</span>
-          </div>
-          <span class="fd-account-brand fd-account-brand--visa">VISA</span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Subscriptions -->
-    <div class="fd-card fd-card--metric">
-      <div class="fd-card-header">
-        <span class="fd-card-title">Subscri...</span>
-        <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px">↗</button>
-      </div>
-      <span class="fd-up">↑ +2 Total</span>
-      <div class="fd-metric-value">11</div>
-    </div>
-
-    <!-- Saving tips -->
-    <div class="fd-card fd-card--metric">
-      <div class="fd-card-header">
-        <span class="fd-card-title">Saving tips</span>
-        <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px">↗</button>
-      </div>
-      <span class="fd-metric-sub" style="font-size:12px;color:var(--fd-text-muted)">Save from subscri...</span>
-      <div class="fd-metric-value">$120</div>
-    </div>
-
-    <!-- Savings -->
-    <div class="fd-card fd-card--savings">
-      <div class="fd-card-header">
-        <div>
-          <span class="fd-card-title">My Savings</span>
-          <p class="fd-card-subtitle">You have 2 goal</p>
-        </div>
-        <button class="fd-icon-btn" style="width:28px;height:28px;font-size:12px;background:rgba(204,255,0,0.15);color:#CCFF00">+</button>
-      </div>
-      <div class="fd-saving-item">
-        <div class="fd-saving-header"><span class="fd-saving-pct">80.2%</span></div>
-        <div class="fd-progress-track"><div class="fd-progress-fill" style="width:80%"></div></div>
-        <div class="fd-saving-info">
-          <span class="fd-saving-current">$8.2K</span>
-          <span class="fd-saving-label">Family trip</span>
-          <span class="fd-saving-goal">↑ Goal $10K</span>
-        </div>
-      </div>
-      <div class="fd-saving-item">
-        <div class="fd-saving-header"><span class="fd-saving-pct">12.4%</span></div>
-        <div class="fd-progress-track"><div class="fd-progress-fill" style="width:12%"></div></div>
-        <div class="fd-saving-info">
-          <span class="fd-saving-current">$10.2K</span>
-          <span class="fd-saving-label">New car</span>
-          <span class="fd-saving-goal">↑ Goal $58K</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add widget -->
-    <div class="fd-card fd-card--add" onclick="alert('Add widget clicked!')">
-      <span class="fd-add-icon">+</span>
-      <span class="fd-add-label">Add widget</span>
-    </div>
-
-  </div><!-- /fd-grid -->
-</div><!-- /fd-container -->
-
-<script>
-  function setTab(btn) {
-    document.querySelectorAll('#tabs .fd-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  function togglePill(btn) {
-    btn.closest('div').querySelectorAll('.fd-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-  }
-</script>
+</div>
 </body>
 </html>
