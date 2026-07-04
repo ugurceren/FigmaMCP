@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/ugurceren-figmamcp-badge.png)](https://mseep.ai/app/ugurceren-figmamcp)
+
 ## Figma MCP Kurulum Rehberi
 
 Bu repo, Figma REST API'yi Cursor gibi MCP destekli istemcilerde kullanılabilecek tool'lara dönüştüren yerel bir **Model Context Protocol (MCP) server** içerir.
